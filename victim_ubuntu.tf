@@ -1,9 +1,5 @@
-#Local Variables
-locals {
-  vulnvm-name = "VulnServer"
-}
-
 # Create Security Group to access web
+
 resource "azurerm_network_security_group" "victim-linux-nsg" {
   depends_on=[azurerm_resource_group.victim-network-rg]
   name = "vuln-web-linux-vm-nsg"
@@ -39,6 +35,7 @@ resource "azurerm_network_security_group" "victim-linux-nsg" {
 }
 
 #Public IP Address
+
 resource "azurerm_public_ip" "vulnpublicip" {
     name                         = "ubuntupublic"
     location                     = azurerm_resource_group.victim-network-rg.location
@@ -54,7 +51,7 @@ resource "azurerm_network_interface" "vuln-ubuntu" {
   resource_group_name = azurerm_resource_group.victim-network-rg.name
 
   ip_configuration {
-    name                          = "${local.vulnvm-name}-ip"
+    name                          = "${var.vulnvm-name}-ip"
     subnet_id                     = azurerm_subnet.victim-network-subnet.id
     private_ip_address_allocation = "Static"
     private_ip_address = "10.1.0.10"
@@ -63,11 +60,16 @@ resource "azurerm_network_interface" "vuln-ubuntu" {
   }
 }
 
+#Associate Security Group with Internface
 
+resource "azurerm_network_interface_security_group_association" "victim-linux-nsg-int" {
+  network_interface_id      = azurerm_network_interface.vuln-ubuntu.id
+  network_security_group_id = azurerm_network_security_group.victim-linux-nsg.id
+  }
 
 
 resource "azurerm_virtual_machine" "main" {
-  name                  = "${local.vulnvm-name}"
+  name                  = var.vulnvm-name
   location              = azurerm_resource_group.victim-network-rg.location
   resource_group_name   = azurerm_resource_group.victim-network-rg.name
   network_interface_ids = [azurerm_network_interface.vuln-ubuntu.id]
@@ -83,15 +85,15 @@ resource "azurerm_virtual_machine" "main" {
     version   = "latest"
   }
   storage_os_disk {
-    name              = "${local.vulnvm-name}-disk"
+    name              = "${var.vulnvm-name}-disk"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
     computer_name  = "VulnServer"
-    admin_username = "mike"
-    admin_password = "Vpn123vpn123!"
+    admin_username = var.username
+    admin_password = var.password
     custom_data = file("vuln_bootstrap.sh") 
   }
   os_profile_linux_config {

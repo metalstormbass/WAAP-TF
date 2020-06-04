@@ -22,3 +22,22 @@ variable "environment" {
   type        = string
   description = "Staging or Production"
 }
+
+# vulnvm-name
+variable "vulnvm-name" {
+  type        = string
+  description = "Name of Vulnerable VM"
+}
+
+# username
+variable "username" {
+  type        = string
+  description = "Username"
+}
+
+# password
+variable "password" {
+  type        = string
+  description = "Password"
+}
+

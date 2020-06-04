@@ -1,11 +1,15 @@
 #!/bin/bash
+#Variables
+name=mike
+token=<insert WAAP token here>
+
 # Update and download Nginx
 until sudo apt-get update && sudo apt-get -y install nginx;do
     sleep 1
 done
 
 # Update and download docker
-until sudo  apt-get -y install docker;do
+until sudo  apt-get -y install docker.io;do
     sleep 1
 done
 
@@ -15,14 +19,15 @@ until sudo docker pull bkimminich/juice-shop;do
 done
 
 # Start Docker
-docker run --rm -d -p 3000:3000 bkimminich/juice-shop
+sudo service nginx stop
+sudo docker run --rm -d -p 3000:3000 bkimminich/juice-shop
 
 # Gather IP address
 
-ip_address=$(ifconfig ens192 | grep "inet " | awk -F'[: ]+' '{ print $3 }')
+ip_address=$(dig +short myip.opendns.com @resolver1.opendns.com)
 
 # Modify Nginx Config to allow access to Juice Store
-sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
+sudo touch /etc/nginx/conf.d/juice.conf
 
 sudo chmod a+w /etc/nginx/conf.d/juice.conf
 
@@ -39,16 +44,19 @@ server {
 }
 EOT
 
+sudo service nginx restart
+sleep 2
 sudo nginx -s reload
 
 # Download the CPnanoAgent
 until curl \
-    --output /home/mike/cp-nano-egg.sh \
+    --output /home/$name/cp-nano-egg.sh \
     --url https://chkpscripts.s3.amazonaws.com/cp-nano-egg.sh ; do
     sleep 1
 done
 
 # Install Nano Agent
-sudo chmod 755 /home/mike/cp-nano-egg.sh
-sudo /home/chkpuser/cp-nano-egg.sh --install --ignore accessControl --token <INSERT WAAP TOKEN HERE> --fog_address https://i2-agents.cloud.ngen.checkpoint.com
+sudo chmod 755 /home/$name/cp-nano-egg.sh
+sleep 1
+sudo /home/$name/cp-nano-egg.sh --install --ignore accessControl --token $token --fog_address https://i2-agents.cloud.ngen.checkpoint.com
 
