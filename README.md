@@ -41,15 +41,15 @@ attacker-network-vnet-cidr = "10.2.0.0/16"
 attacker-network-subnet-cidr = "10.2.0.0/24"
 environment = "Staging"
 vulnvm-name = "VulnServer"
-username = "mike"
+username = "mike" 
 password = "Vpn123vpn123!"
 ```
 
-vuln_bootstrap.sh
+vuln_bootstrap.sh (#Username for vulnerable server. Make sure that this is the same as the username in terraform.tfvars)
 
 ```hcl
 #Variables
-name=mike
+name=mike 
 token=<insert WAAP token here>
 ```
 
