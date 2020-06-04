@@ -53,6 +53,8 @@ name=mike
 token=<insert WAAP token here>
 ```
 
+NOTE: Comment out the token variable if you are not deploying WAAP
+
 Run the following commands in Terraform:
 
 ```hcl
@@ -67,11 +69,3 @@ terraform apply
 
 Finally, wait until Terraform has completed. Then wait an addtional 5-10 mins for the VM to complete bootstrapping.
 
-## Issues:
-To destroy, you need to run:
-
-```hcl
-terraform destroy
-```
-
-At this point, you need to run it several (~3) times for the environment to be completely removed. This will be addressed soon.
