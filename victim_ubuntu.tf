@@ -37,7 +37,7 @@ resource "azurerm_network_security_group" "victim-linux-nsg" {
 #Public IP Address
 
 resource "azurerm_public_ip" "vulnpublicip" {
-    name                         = "ubuntupublic"
+    name                         = "${var.vulnvm-name}-public-ip"
     location                     = azurerm_resource_group.victim-network-rg.location
     resource_group_name          = azurerm_resource_group.victim-network-rg.name
     allocation_method = "Dynamic"
@@ -46,7 +46,7 @@ resource "azurerm_public_ip" "vulnpublicip" {
 
 #Create Network Interface
 resource "azurerm_network_interface" "vuln-ubuntu" {
-  name                = "victim-nic"
+  name                = "${var.vulnvm-name}-nic"
   location            = azurerm_resource_group.victim-network-rg.location
   resource_group_name = azurerm_resource_group.victim-network-rg.name
 
@@ -91,7 +91,7 @@ resource "azurerm_virtual_machine" "main" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "VulnServer"
+    computer_name  = var.vulnvm-name
     admin_username = var.username
     admin_password = var.password
     custom_data = file("vuln_bootstrap.sh") 

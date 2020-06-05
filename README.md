@@ -41,17 +41,19 @@ attacker-network-vnet-cidr = "10.2.0.0/16"
 attacker-network-subnet-cidr = "10.2.0.0/24"
 environment = "Staging"
 vulnvm-name = "VulnServer"
-username = "mike"
+username = "mike" 
 password = "Vpn123vpn123!"
 ```
 
-vuln_bootstrap.sh
+vuln_bootstrap.sh (#Username for vulnerable server. Make sure that this is the same as the username in terraform.tfvars)
 
 ```hcl
 #Variables
-name=mike
+name=mike 
 token=<insert WAAP token here>
 ```
+
+NOTE: Comment out the token variable if you are not deploying WAAP
 
 Run the following commands in Terraform:
 
@@ -67,11 +69,13 @@ terraform apply
 
 Finally, wait until Terraform has completed. Then wait an addtional 5-10 mins for the VM to complete bootstrapping.
 
-## Issues:
+
 To destroy, you need to run:
 
 ```hcl
 terraform destroy
 ```
 
-At this point, you need to run it several (~3) times for the environment to be completely removed. This will be addressed soon.
+## Issues:
+
+At this point, sometimes you need to run the destroy  command several (~3) times for the environment to be completely removed. This appears to be a bug in the dependency handling within Terraform.
