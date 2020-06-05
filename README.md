@@ -12,6 +12,7 @@ Finally, it will deploy the WAAP and register it.
 ## Prerequisites
 
 Terraform
+
 Azure CLI
 
 ## Usage:
