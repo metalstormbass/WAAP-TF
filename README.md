@@ -34,9 +34,9 @@ terraform.tfvars
 
 ```hcl
 victim_company = "MikeNet"
-attacker_company = "EvilCorp"
-victim-network-vnet-cidr = "10.1.0.0/16"
-victim-network-subnet-cidr = "10.1.0.0/24"
+attacker_company = "EvilCorp" #This will be used for future enhancement
+victim-network-vnet-cidr = "10.1.0.0/16" #This will be used for future enhancement
+victim-network-subnet-cidr = "10.1.0.0/24" #This will be used for future enhancement
 attacker-network-vnet-cidr = "10.2.0.0/16"
 attacker-network-subnet-cidr = "10.2.0.0/24"
 environment = "Staging"
@@ -44,6 +44,9 @@ vulnvm-name = "VulnServer"
 username = "mike" 
 password = "Vpn123vpn123!"
 ```
+
+
+
 
 vuln_bootstrap.sh (#Username for vulnerable server. Make sure that this is the same as the username in terraform.tfvars)
 
