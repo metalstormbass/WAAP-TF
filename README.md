@@ -69,6 +69,7 @@ terraform apply
 
 Finally, wait until Terraform has completed. Then wait an addtional 5-10 mins for the VM to complete bootstrapping.
 
+<<<<<<< HEAD
 
 To destroy, you need to run:
 
