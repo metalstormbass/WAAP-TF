@@ -107,5 +107,5 @@ resource "azurerm_virtual_machine" "main" {
 #Output Public IP Address
 # Output the public ip of the gateway
 output "Public_ip" {
-    value = azurerm_public_ip.vuln-public-ip.ip_address
+    value = azurerm_public_ip.vulnpublicip.ip_address
 }
