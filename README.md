@@ -4,7 +4,7 @@ Automatically Deploy WAAP and Vulnerable Web App
 
 This playbook will install Nginx and Docker on a Ubuntu VM within Azure. 
 
-It will then download [OWASP Juice Shop] (https://github.com/bkimminich/juice-shop) and run as a container.
+It will then download [OWASP Juice Shop](https://github.com/bkimminich/juice-shop) and run as a container.
 
 Finally, it will deploy the WAAP and register it.
 
