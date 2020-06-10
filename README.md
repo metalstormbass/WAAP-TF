@@ -35,11 +35,8 @@ terraform.tfvars
 
 ```hcl
 victim_company = "MikeNet"
-attacker_company = "EvilCorp" #This will be used for future enhancement
-victim-network-vnet-cidr = "10.1.0.0/16" 
-victim-network-subnet-cidr = "10.1.0.0/24" 
-attacker-network-vnet-cidr = "10.2.0.0/16" #This will be used for future enhancement
-attacker-network-subnet-cidr = "10.2.0.0/24" #This will be used for future enhancement
+victim-network-vnet-cidr = "10.22.0.0/16" 
+victim-network-subnet-cidr = "10.22.0.0/24" 
 environment = "Staging"
 vulnvm-name = "VulnServer"
 username = "mike" 
