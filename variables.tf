@@ -11,10 +11,16 @@ variable "location" {
   default     = "West US 2"
 }
 
-# attacker company name 
-variable "attacker_company" {
+# victim vnet cidr
+variable "victim-network-vnet-cidr" {
   type        = string
-  description = "EvilCorp is the APT group"
+  description = "VNET"
+}
+
+# victim vnet cidr
+variable "victim-network-subnet-cidr" {
+  type        = string
+  description = "Subnet"
 }
 
 # environment
