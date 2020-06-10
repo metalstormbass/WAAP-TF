@@ -1,6 +1,6 @@
 victim_company = "MikeNet"
-victim-network-vnet-cidr = "10.1.0.0/16"
-victim-network-subnet-cidr = "10.1.0.0/24"
+victim-network-vnet-cidr = "10.56.0.0/16"
+victim-network-subnet-cidr = "10.56.0.0/24"
 environment = "Staging"
 vulnvm-name = "VulnServer"
 username = "mike"

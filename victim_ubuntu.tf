@@ -54,7 +54,7 @@ resource "azurerm_network_interface" "vuln-ubuntu" {
     name                          = "${var.vulnvm-name}-ip"
     subnet_id                     = azurerm_subnet.victim-network-subnet.id
     private_ip_address_allocation = "Static"
-    private_ip_address = "10.1.0.10"
+    private_ip_address = "10.56.0.10"
     primary = true
         public_ip_address_id = azurerm_public_ip.vulnpublicip.id
   }
