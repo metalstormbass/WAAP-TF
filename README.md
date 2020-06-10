@@ -29,9 +29,7 @@ Ensure that you have Azure CLI installed. Once installed run the following comma
 az login
 ```
 
-Edit the variables as required. Review terraform.tfvars and vuln_bootstrap.sh
-
-terraform.tfvars
+Edit the variables as required. You can create a terraform.tfvars file and fill it our like below. Otherwise, you will be prompted for the information.
 
 ```hcl
 victim_company = "MikeNet"
@@ -45,8 +43,7 @@ password = "Vpn123vpn123!"
 
 
 
-
-vuln_bootstrap.sh (#Username for vulnerable server. Make sure that this is the same as the username in terraform.tfvars) Insert your WAAP token.
+In vuln_bootstrap.sh (#Username for vulnerable server. Make sure that this is the same as the username in terraform.tfvars) Insert your WAAP token.
 
 ```hcl
 #Variables
