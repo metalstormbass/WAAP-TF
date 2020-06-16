@@ -39,19 +39,8 @@ environment = "Staging"
 vulnvm-name = "VulnServer"
 username = "mike" 
 password = "Vpn123vpn123!"
+token = INSERT WAAP Token here
 ```
-
-
-
-In vuln_bootstrap.sh (#Username for vulnerable server. Make sure that this is the same as the username in terraform.tfvars) Insert your WAAP token.
-
-```hcl
-#Variables
-name=mike 
-token=insert_token_here
-```
-
-NOTE: Comment out the token variable if you are not deploying WAAP
 
 Run the following commands in Terraform:
 
