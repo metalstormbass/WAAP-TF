@@ -55,6 +55,12 @@ resource "azurerm_public_ip" "vulnpublicip" {
     allocation_method = "Dynamic"
 }
 
+# Output the public ip of the gateway
+
+output "VulnIP" {
+    value = azurerm_public_ip.vulnpublicip.ip_address
+}
+
 
 #Create Network Interface
 resource "azurerm_network_interface" "vuln-ubuntu" {
@@ -106,7 +112,7 @@ resource "azurerm_virtual_machine" "main" {
     computer_name  = var.vulnvm-name
     admin_username = var.username
     admin_password = var.password
-    custom_data = file("vuln_bootstrap.sh") 
+    custom_data = data.template_file.userdata_setup.rendered
   }
   os_profile_linux_config {
     disable_password_authentication = false
@@ -116,8 +122,3 @@ resource "azurerm_virtual_machine" "main" {
   }
 }
 
-#Output Public IP Address
-# Output the public ip of the gateway
-output "Public_ip" {
-    value = azurerm_public_ip.vulnpublicip.ip_address
-}
