@@ -1,7 +1,4 @@
 #!/bin/bash
-#Variables
-name=mike
-token=insert_token_here
 
 # Update and download Nginx
 until sudo apt-get update && sudo apt-get -y install nginx;do

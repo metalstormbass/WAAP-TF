@@ -1,3 +1,15 @@
+#Variable Processing
+# Setup the userdata that will be used for the instance
+data "template_file" "userdata_setup" {
+  template = "${file("userdata_setup.template")}"
+
+  vars  = {
+    name       = "${var.usernam}"
+    token     = "${var.token}"
+    logic = "${file("vuln_bootstrap.sh")}"
+  }
+}
+
 # Create Security Group to access web
 
 resource "azurerm_network_security_group" "victim-linux-nsg" {
