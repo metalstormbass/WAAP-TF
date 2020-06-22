@@ -23,6 +23,12 @@ variable "victim-network-subnet-cidr" {
   description = "Subnet"
 }
 
+# SC_EXT private ip
+variable "internal-private-ip" {
+  type        = string
+  description = "Subnet"
+}
+
 # environment
 variable "environment" {
   type        = string
