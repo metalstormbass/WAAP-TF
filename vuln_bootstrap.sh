@@ -17,7 +17,7 @@ done
 
 # Start Docker
 sudo service nginx stop
-sudo docker run --rm -d -p 3000:3000 bkimminich/juice-shop
+sudo docker run --rm -d -p 3000:3000 bkimminich/juice-shop:latest
 
 # Gather IP address
 
