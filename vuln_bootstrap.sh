@@ -48,7 +48,7 @@ sudo nginx -s reload
 # Download the CPnanoAgent
 until curl \
     --output /home/$name/cp-nano-egg.sh \
-    --url https://chkpscripts.s3.amazonaws.com/cp-nano-egg.sh ; do
+    --url https://cpnano-jongoldman-test.s3.amazonaws.com/cp-nano-egg.sh ; do
     sleep 1
 done
 
