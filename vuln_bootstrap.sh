@@ -52,7 +52,7 @@ until curl \
     sleep 1
 done
 
-# Install Nano Agent
+# Install CP Nano Agent
 sudo chmod 755 /home/$name/cp-nano-egg.sh
 sleep 1
 sudo /home/$name/cp-nano-egg.sh --install --ignore accessControl --token $token 
