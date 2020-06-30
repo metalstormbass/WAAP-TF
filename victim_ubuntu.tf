@@ -92,7 +92,7 @@ resource "azurerm_virtual_machine" "main" {
   resource_group_name   = azurerm_resource_group.victim-network-rg.name
   network_interface_ids = [azurerm_network_interface.vuln-ubuntu.id]
   depends_on = [
-    azurerm_network_interface_application_security_group_association.victim-linux-nsg-int
+    azurerm_network_interface_security_group_association.victim-linux-nsg-int
   ]
   
   vm_size               = "Standard_DS1_v2"
