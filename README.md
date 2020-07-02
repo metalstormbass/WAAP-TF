@@ -64,6 +64,4 @@ To destroy, you need to run:
 terraform destroy
 ```
 
-## Issues:
 
-At this point, sometimes you need to run the destroy  command several (~3) times for the environment to be completely removed. This appears to be a bug in the dependency handling within Terraform.
