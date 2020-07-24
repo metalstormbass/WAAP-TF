@@ -1,5 +1,5 @@
 # WAAP-TF
-### Automatically Deploy WAAP and Vulnerable Web App
+## Automatically Deploy WAAP and Vulnerable Web App
 Written by Michael Braun
 
 
