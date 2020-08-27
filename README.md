@@ -12,57 +12,66 @@ Finally, it will deploy the WAAP and register it.
 
 ## Prerequisites
 
-Terraform
-
-Azure CLI
+[Github Account](https://github.com) <br>
+[Azure Account](https://portal.azure.com) <br>
+[Terraform Cloud Account](https://terraform.io) <br>
+[Check Point Cloud Portal](https://portal.checkpoint.com) - Need WAAP Token <br>
 
 ## Usage:
 
-Clone the repository
+Fork the repository into your own Github.
 
-```hcl
-git clone https://github.com/metalstormbass/WAAP-TF.git
-```
+Then:
 
-Ensure that you have Azure CLI installed. Once installed run the following command in Powershell.
+1. Login to Terraform Cloud and create a new workspace.<br> 
 
-```hcl
-az login
-```
+2. Select Version Control Workflow <br>
 
-Edit the variables as required. You can create a terraform.tfvars file and fill it our like below. Otherwise, you will be prompted for the information.
+![](/images/t1.PNG)
 
-```hcl
-victim_company = "MikeNet"
-victim-network-vnet-cidr = "10.22.0.0/16" 
-victim-network-subnet-cidr = "10.22.0.0/24" 
-environment = "Staging"
-vulnvm-name = "VulnServer"
-username = "mike" 
-password = "Vpn123vpn123!"
-token = INSERT WAAP Token here
-```
+3. Connect it to Github <br>
 
-Run the following commands in Terraform:
+![](/images/t2.PNG)
 
-```hcl
-terraform init
-```
+4. Select  the WAAP-TF Repository. <br>
 
-then:
+![](/images/t3.PNG)
 
-```hcl
-terraform apply
-```
 
-Finally, wait until Terraform has completed. Then wait an addtional 5-10 mins for the VM to complete bootstrapping.
+5. Fill out the Terraform Variables. There are two kinds, Terraform Variables and Environemnt Variables<br>
+
+<b> Environment Variables </b>
+
+![](/images/t5.PNG)
+
+This is the app registration information
+
+ARM_CLIENT_ID = client ID<br>
+ARM_CLIENT_SECRET = secret<br>
+ARM_TENANT_ID = tenant ID<br>
+ARM_SUBSCRIPTION_ID = subscription ID<br>
 
 
 
-To destroy, you need to run:
+<b> Terraform Variables </b><br>
 
-```hcl
-terraform destroy
-```
+For the Terraform Variables, you need to match the variables defined in the variables.tf file that do not have a default value associated with it. By default you have to define:<br>
 
+victim_company<br>
+username<br>
+password<br>
+token<br>
+
+
+![](/images/t4.PNG)
+
+
+Finally, you need to Queue the plan in Terraform Cloud:
+
+![](/images/t6.PNG)
+
+
+## Destruction
+
+Click on Setting > Destruction and Deletion > Queue Destroy Plan
 
