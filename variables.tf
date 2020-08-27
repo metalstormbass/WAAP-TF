@@ -36,14 +36,14 @@ variable "internal-private-ip" {
 variable "environment" {
   type        = string
   description = "Staging or Production"
-  default     = staging
+  default     = "staging"
 }
 
 # vulnvm-name
 variable "vulnvm-name" {
   type        = string
   description = "Name of Vulnerable VM"
-  default     = JuiceShopWAAPDemo
+  default     = "JuiceShopWAAPDemo"
 }
 
 # username
