@@ -1,6 +1,6 @@
 # WAAP-TF
 ## Automatically Deploy WAAP and Vulnerable Web App
-Written by Mike Braun
+Written by Michael Braun
 
 
 This playbook will install Nginx and Docker on a Ubuntu VM within Azure. 
